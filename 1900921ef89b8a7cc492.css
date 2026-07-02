@@ -1,0 +1,419 @@
+/* Shape Tools — lean icon task pane (linear-color style). */
+
+:root {
+  --ink: #2b2f3a;
+  --muted: #6b7280;
+  --line: #e6e8ec;
+  --bg: #ffffff;
+  --bg-soft: #f6f7f9;
+  --accent: #4263eb;
+  --accent-fg: #ffffff;
+  --ok: #2f9e44;
+  --warn: #e03131;
+  --key: #7048e8;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.sprite {
+  position: absolute;
+}
+
+/* ---------- header ---------- */
+.hdr {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.hdr-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f03e3e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hdr-title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.badge {
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1px 7px;
+  margin-left: auto;
+}
+
+.hdr-key {
+  font-size: 14px;
+  line-height: 1;
+  padding: 4px 7px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.hdr-key.active {
+  background: var(--key);
+  border-color: var(--key);
+  color: #fff;
+}
+
+.notice {
+  margin: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+
+.banner {
+  margin: 8px 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #f3f0ff;
+  color: var(--key);
+  font-size: 11.5px;
+}
+
+/* ---------- feature groups ---------- */
+/* Compact group: title floats on the left, controls fill the right column,
+   so each feature is one short row and the whole pane fits without scrolling. */
+.grp {
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.grp-title {
+  float: left;
+  width: 60px;
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  line-height: 1.15;
+  padding-top: 7px;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-left: 68px;
+}
+
+.ibtn {
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--bg);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ibtn:hover {
+  background: var(--bg-soft);
+  border-color: #d5d9e0;
+}
+
+.ibtn:active {
+  transform: translateY(1px);
+}
+
+/* armed state (e.g. eyedropper on) */
+.ibtn.active {
+  background: #eef1fe;
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.ibtn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.ic {
+  width: 21px;
+  height: 21px;
+  pointer-events: none; /* clicks land on the button */
+}
+
+/* a shape has a shortcut bound: little dot in the corner */
+.ibtn.has-key::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--key);
+}
+
+/* shortcut-assign mode */
+.assign .ibtn {
+  outline: 1px dashed transparent;
+}
+
+.assign .ibtn:hover {
+  outline-color: var(--key);
+}
+
+.ibtn.recording {
+  outline: 2px solid var(--key);
+  background: #f3f0ff;
+}
+
+.ibtn-wide {
+  width: auto;
+  gap: 6px;
+  padding: 5px 10px;
+  font: inherit;
+  color: var(--muted);
+}
+
+.ibtn-wide span {
+  pointer-events: none;
+}
+
+/* ---------- small inline controls ---------- */
+.mini,
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin: 4px 0 0 68px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.mini-num {
+  width: 46px;
+  font: inherit;
+  padding: 2px 5px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-soft);
+}
+
+/* palette apply-to toggle (distinct class so it doesn't collide with the anchor toggle) */
+.ptoggle-btn {
+  font: inherit;
+  font-size: 11px;
+  padding: 2px 9px;
+  border: none;
+  background: var(--bg);
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.ptoggle-btn + .ptoggle-btn {
+  border-left: 1px solid var(--line);
+}
+
+.ptoggle-btn.active {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.swatch:hover {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ---------- tooltip ---------- */
+.tip {
+  position: fixed;
+  z-index: 50;
+  max-width: 210px;
+  padding: 7px 9px;
+  border-radius: 7px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 11.5px;
+  line-height: 1.35;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+}
+
+.tip b {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.tip .tip-key {
+  display: block;
+  margin-top: 4px;
+  color: #b3c0ff;
+}
+
+/* ---------- status ---------- */
+.status {
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.status.error {
+  color: var(--warn);
+}
+
+.status.ok {
+  color: var(--ok);
+}
+
+/* ---------- footer (selection + anchor) ---------- */
+.foot {
+  border-top: 1px solid var(--line);
+  padding: 4px 10px 10px;
+}
+
+.foot > summary {
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  padding: 4px 0;
+}
+
+.foot-body {
+  padding-top: 6px;
+}
+
+.toggle {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.toggle-btn {
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 12px;
+  border: none;
+  background: var(--bg);
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.toggle-btn + .toggle-btn {
+  border-left: 1px solid var(--line);
+}
+
+.toggle-btn.active {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 11.5px;
+  margin: 6px 0;
+}
+
+.selection-list {
+  margin: 6px 0 8px;
+  padding: 0;
+  list-style: none;
+  max-height: 160px;
+  overflow: auto;
+}
+
+.selection-list li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 2px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11.5px;
+}
+
+.selection-list li:last-child {
+  border-bottom: none;
+}
+
+.selection-list .order-num {
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 14px;
+}
+
+.ref-badge {
+  margin-left: 6px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 1px 6px;
+}
+
+.shape-meta {
+  color: var(--muted);
+  font-size: 10.5px;
+}

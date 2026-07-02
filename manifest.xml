@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>d42fba09-b2bc-4262-89c8-600fd1346961</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Max Rachuth</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="PPT Tools"/>
+  <Description DefaultValue="Align, dock, distribute, size, resize, recolor and rebuild shapes — cross-platform."/>
+  <IconUrl DefaultValue="https://rachy1910.github.io/ppt-tools/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://rachy1910.github.io/ppt-tools/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://www.example.com"/>
+  <Hosts>
+    <Host Name="Presentation"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://rachy1910.github.io/ppt-tools/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="ShapeToolsGroup">
+                <Label resid="ShapeToolsGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+                <!-- Ribbon button #1: opens the task pane -->
+                <Control xsi:type="Button" id="ShowTaskpaneButton">
+                  <Label resid="ShowTaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="ShowTaskpaneButton.Label"/>
+                    <Description resid="ShowTaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ShapeToolsPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+                <!-- Ribbon button #2: runs a function directly (ExecuteFunction) -->
+                <Control xsi:type="Button" id="InsertTestShapesButton">
+                  <Label resid="InsertTestShapesButton.Label"/>
+                  <Supertip>
+                    <Title resid="InsertTestShapesButton.Label"/>
+                    <Description resid="InsertTestShapesButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>insertTestShapes</FunctionName>
+                  </Action>
+                </Control>
+                <!-- Match size to master (M10) -->
+                <Control xsi:type="Button" id="MatchWidthButton">
+                  <Label resid="MatchWidth.Label"/>
+                  <Supertip>
+                    <Title resid="MatchWidth.Label"/>
+                    <Description resid="MatchWidth.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>matchWidth</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="MatchHeightButton">
+                  <Label resid="MatchHeight.Label"/>
+                  <Supertip>
+                    <Title resid="MatchHeight.Label"/>
+                    <Description resid="MatchHeight.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>matchHeight</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="MatchBothButton">
+                  <Label resid="MatchBoth.Label"/>
+                  <Supertip>
+                    <Title resid="MatchBoth.Label"/>
+                    <Description resid="MatchBoth.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>matchBoth</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://rachy1910.github.io/ppt-tools/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://rachy1910.github.io/ppt-tools/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://rachy1910.github.io/ppt-tools/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://rachy1910.github.io/ppt-tools/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://rachy1910.github.io/ppt-tools/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="PPT Tools is ready!"/>
+        <bt:String id="ShapeToolsGroup.Label" DefaultValue="PPT Tools"/>
+        <bt:String id="ShowTaskpaneButton.Label" DefaultValue="PPT Tools"/>
+        <bt:String id="InsertTestShapesButton.Label" DefaultValue="Insert test shapes"/>
+        <bt:String id="MatchWidth.Label" DefaultValue="Match width"/>
+        <bt:String id="MatchHeight.Label" DefaultValue="Match height"/>
+        <bt:String id="MatchBoth.Label" DefaultValue="Match size"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Open the HOME tab and click PPT Tools to get started."/>
+        <bt:String id="ShowTaskpaneButton.Tooltip" DefaultValue="Open the PPT Tools task pane."/>
+        <bt:String id="InsertTestShapesButton.Tooltip" DefaultValue="Drop four labeled rectangles (A–D) on the slide for testing the selection-order spike."/>
+        <bt:String id="MatchWidth.Tooltip" DefaultValue="Match the width of selected shapes to the master (last-selected). Needs 2+ shapes."/>
+        <bt:String id="MatchHeight.Tooltip" DefaultValue="Match the height of selected shapes to the master (last-selected). Needs 2+ shapes."/>
+        <bt:String id="MatchBoth.Tooltip" DefaultValue="Match width and height of selected shapes to the master (last-selected). Needs 2+ shapes."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
