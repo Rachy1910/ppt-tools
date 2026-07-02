@@ -52,68 +52,6 @@
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
                 </Control>
-                <!-- Ribbon button #2: runs a function directly (ExecuteFunction) -->
-                <Control xsi:type="Button" id="InsertTestShapesButton">
-                  <Label resid="InsertTestShapesButton.Label"/>
-                  <Supertip>
-                    <Title resid="InsertTestShapesButton.Label"/>
-                    <Description resid="InsertTestShapesButton.Tooltip"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>insertTestShapes</FunctionName>
-                  </Action>
-                </Control>
-                <!-- Match size to master (M10) -->
-                <Control xsi:type="Button" id="MatchWidthButton">
-                  <Label resid="MatchWidth.Label"/>
-                  <Supertip>
-                    <Title resid="MatchWidth.Label"/>
-                    <Description resid="MatchWidth.Tooltip"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>matchWidth</FunctionName>
-                  </Action>
-                </Control>
-                <Control xsi:type="Button" id="MatchHeightButton">
-                  <Label resid="MatchHeight.Label"/>
-                  <Supertip>
-                    <Title resid="MatchHeight.Label"/>
-                    <Description resid="MatchHeight.Tooltip"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>matchHeight</FunctionName>
-                  </Action>
-                </Control>
-                <Control xsi:type="Button" id="MatchBothButton">
-                  <Label resid="MatchBoth.Label"/>
-                  <Supertip>
-                    <Title resid="MatchBoth.Label"/>
-                    <Description resid="MatchBoth.Tooltip"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>matchBoth</FunctionName>
-                  </Action>
-                </Control>
               </Group>
             </OfficeTab>
           </ExtensionPoint>
@@ -135,18 +73,10 @@
         <bt:String id="GetStarted.Title" DefaultValue="PPT Tools is ready!"/>
         <bt:String id="ShapeToolsGroup.Label" DefaultValue="PPT Tools"/>
         <bt:String id="ShowTaskpaneButton.Label" DefaultValue="PPT Tools"/>
-        <bt:String id="InsertTestShapesButton.Label" DefaultValue="Insert test shapes"/>
-        <bt:String id="MatchWidth.Label" DefaultValue="Match width"/>
-        <bt:String id="MatchHeight.Label" DefaultValue="Match height"/>
-        <bt:String id="MatchBoth.Label" DefaultValue="Match size"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Open the HOME tab and click PPT Tools to get started."/>
         <bt:String id="ShowTaskpaneButton.Tooltip" DefaultValue="Open the PPT Tools task pane."/>
-        <bt:String id="InsertTestShapesButton.Tooltip" DefaultValue="Drop four labeled rectangles (A–D) on the slide for testing the selection-order spike."/>
-        <bt:String id="MatchWidth.Tooltip" DefaultValue="Match the width of selected shapes to the master (last-selected). Needs 2+ shapes."/>
-        <bt:String id="MatchHeight.Tooltip" DefaultValue="Match the height of selected shapes to the master (last-selected). Needs 2+ shapes."/>
-        <bt:String id="MatchBoth.Tooltip" DefaultValue="Match width and height of selected shapes to the master (last-selected). Needs 2+ shapes."/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
